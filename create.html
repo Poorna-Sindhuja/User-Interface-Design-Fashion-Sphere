@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload Your Designs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff5f5;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .upload-box {
+      border: 2px dashed #8b6c83;
+      border-radius: 12px;
+      padding: 60px 80px;
+      margin-bottom: 20px;
+      display: inline-block;
+      cursor: pointer;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .upload-box:hover {
+      background-color: #fcecf1;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    /* Gallery box styling */
+    .gallery-box {
+      border: 2px solid #8b6c83;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #fff0f5;
+    }
+
+    .gallery-box h3 {
+      margin-top: 0;
+      color: #8b6c83;
+      margin-bottom: 15px;
+    }
+
+    .preview-area {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .preview-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .preview-wrapper img {
+      width: 150px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      display: block;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(255, 0, 0, 0.8);
+      border: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 22px;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .delete-btn:hover {
+      background: rgba(255, 0, 0, 1);
+    }
+
+    button#okBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #8b6c83;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button#okBtn:hover {
+      background-color: #6b4d63;
+    }
+    header{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    color:#604652 ;
+    background-color:#FFF7F3;
+    text-align: center;
+    border-radius: 10px;
+    width:100%;
+    border-width: 1px;
+    border-color: #604652;
+    border-style: groove;
+    }
+  </style>
+</head>
+<body>
+<header>Creator: Your Personal Design Studio</header>
+<br>
+  <h2>Upload Your Designs</h2>
+  <label class="upload-box">
+    ➕<br />  Upload or Drop Multiple Designs
+    <input type="file" id="fileInput" accept="image/*" multiple />
+  </label>
+
+  <!-- Gallery box container -->
+  <div class="gallery-box">
+    <h3>Your Design Gallery</h3>
+    <div class="preview-area" id="previewArea"></div>
+  </div>
+
+  <button id="okBtn">OK - Go to Home</button>
+
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const previewArea = document.getElementById("previewArea");
+    const okBtn = document.getElementById("okBtn");
+
+    let imageList = JSON.parse(localStorage.getItem("designGallery")) || [];
+
+    // Function to render all images with delete buttons inside gallery box
+    function renderImages() {
+      previewArea.innerHTML = "";
+      if (imageList.length === 0) {
+        previewArea.innerHTML = "<p>No designs uploaded yet.</p>";
+        return;
+      }
+      imageList.forEach((dataURL, index) => {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("preview-wrapper");
+
+        const img = document.createElement("img");
+        img.src = dataURL;
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.innerHTML = "×";
+        deleteBtn.title = "Delete this design";
+
+        deleteBtn.addEventListener("click", () => {
+          imageList.splice(index, 1);
+          localStorage.setItem("designGallery", JSON.stringify(imageList));
+          renderImages();
+        });
+
+        wrapper.appendChild(img);
+        wrapper.appendChild(deleteBtn);
+        previewArea.appendChild(wrapper);
+      });
+    }
+
+    // Initial render on page load
+    renderImages();
+
+    fileInput.addEventListener("change", function () {
+      const files = Array.from(this.files);
+
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const dataURL = e.target.result;
+          imageList.push(dataURL);
+          localStorage.setItem("designGallery", JSON.stringify(imageList));
+          renderImages();
+        };
+        reader.readAsDataURL(file);
+      });
+
+      this.value = ""; // reset input so same file can be uploaded again
+    });
+
+    okBtn.addEventListener("click", () => {
+  if (imageList.length > 0) {
+    alert("Designs uploaded successfully!");
+  }
+  window.location.href = "Homepage.html";
+});
+
+
+  </script>
+
+</body>
+</html>

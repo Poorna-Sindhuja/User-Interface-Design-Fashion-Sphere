@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Billing Summary</title>
+  <link rel="stylesheet" href="design.css">
+  <style>
+  body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #fff7f3;
+    padding: 30px;
+    color: #604652;
+    max-width: 600px;
+    margin: auto;
+  }
+  p.heading {
+    background-color: burlywood;
+    border-radius: 10px;
+    font-size: 40px;
+    padding: 15px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #fdf0f0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 8px;
+  }
+  .item-info {
+    flex-grow: 1;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  #billing-total {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+    border-top: 2px solid #604652;
+    padding-top: 10px;
+  }
+  button {
+    background-color: #604652;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 15px 10px 0 0;
+    font-family: inherit;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #402c38;
+  }
+  .buttons-container {
+    margin-top: 30px;
+    text-align: center;
+  }
+</style>
+
+</head>
+<body>
+  <p class="heading">Billing Summary</p>
+
+  <div id="billing-items"></div>
+  <div id="billing-total" style="font-size: 30px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Total: $0</div>
+
+  <div class="buttons-container">
+  <button onclick="placeOrder()">Place Order</button>
+  <button onclick="window.print()">Print Bill</button>
+  <button onclick="goBackHome()">Back to Home</button>
+</div>
+
+  <script>
+    window.onload = function () {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let total = 0;
+      const billingItemsContainer = document.getElementById("billing-items");
+      const totalDisplay = document.getElementById("billing-total");
+
+      billingItemsContainer.innerHTML = "";
+      cart.forEach(item => {
+  const div = document.createElement("div");
+  div.className = "item";
+  div.innerHTML = `
+    <img src="${item.image}" alt="${item.name}">
+    <div class="item-info">
+      <div><strong>${item.name}</strong></div>
+      <div>Quantity: ${item.quantity}</div>
+      <div>Price: ₹ ${item.price * item.quantity}</div>
+    </div>
+  `;
+  billingItemsContainer.appendChild(div);
+
+  total += item.price * item.quantity; // <-- Accumulate total here
+});
+
+
+      totalDisplay.innerText = `Total: ₹ ${total}`;
+
+    }
+    function generateOrderId() {
+  return "FS" + Math.floor(1000 + Math.random() * 9000);
+}
+   function placeOrder() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart.length === 0) {
+    alert("Cart is empty!");
+    return;
+  }
+
+  const orderId = generateOrderId();
+  const orderDate = new Date().toLocaleString();
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const order = {
+    id: orderId,
+    date: orderDate,
+    items: cart,
+    total: total,
+    status: "Order Placed - Processing"
+  };
+
+  // Save order history
+  const previousOrders = JSON.parse(localStorage.getItem("orders")) || [];
+  previousOrders.push(order);
+  localStorage.setItem("orders", JSON.stringify(previousOrders));
+
+  alert(`Order placed successfully!\nOrder ID: ${orderId}`);
+
+  // Now clear the cart and redirect
+  localStorage.removeItem("cart");
+  localStorage.removeItem("cartTotal");
+  window.location.href = "Track.html"; // Or your desired page
+}
+function goBackHome() {
+      window.location.href = "Homepage.html";
+    }
+  </script>
+
+</body>
+</html>

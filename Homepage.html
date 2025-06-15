@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Fashion Sphere
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+        <!--from bootstramp.com  to use bootstramp we will use CDN-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" 
+        crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <!---javascript bundle with popper. it is also from bootstramp -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/f5be84bbff.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+<header>
+    Fashion Sphere
+</header>
+<br>
+ <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container d-flex justify-content-between">
+        <div>
+            <h1 style="color:#604652">FashionSphere</h1>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" aria-current="page" href="Home.html">Home</a>
+                  </li>
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" href="About.html">About</a>
+                  </li>
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" href="contact.html">Contact</a>
+                  </li>
+                   <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" href="create.html">Creator</a>
+                  </li>
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" href="Track.html">Track</a>
+                  </li>
+                </ul>
+                <div class="position-relative">
+                    <a href="User.html"class="text-decoration-none text-dark">
+                        <i class="fa-solid fa-user nav-icon"></i></a>
+                        &nbsp;
+                        &nbsp;
+                    <a href="cart.html"class="text-decoration-none text-dark">
+                    <i class="fa-solid fa-cart-shopping nav-icon"></i></a>
+                        &nbsp;
+                        <a href="User.html" onclick="logout()" class="text-decoration-none text-dark" title="Logout">
+  <i class="fa-solid fa-right-from-bracket nav-icon"></i>
+</a>
+                </div>
+            </div>
+          </nav>
+    </div>
+  </nav>
+  <br>
+ <br>
+<div>
+    <iframe height="330" width="100%" style="border:none;border-radius: 5px;background-color:#FFF7F3;border-style: groove;border-width: 2px;border-color: #604652;" src="Welcome.html"></iframe>
+</div>
+<div>
+    <p> Here are the choices we offer:</p>
+</div>
+<div class="flex-container-1">
+    <div>
+    <a href="Women.html">
+        <img src="Women/Anarkali.webp" height="300" width="220">
+    </a>
+    </div>
+    <div>
+        <a href="Men.html">
+          <img src="Men/men1.jpg" height="300" width="220">
+        </a>
+    </div>
+    <div>
+        <a href="Jewellery.html">
+            <img src="Jewellery/j6.webp" height="300" width="220">
+        </a>
+    </div>
+    <div>
+        <a href="Kids.html">
+                <img src="Kids/Kid1.jpg" height="330" width="220">
+        </a>
+    </div>
+    <div>
+        <a href="Footwear.html">
+            <img src="Footwear/foot1.jpg" height="310" width="250">
+        </a>
+    </div>
+    <div>
+        <a href="Skincare.html">
+            <img src="Skincare/skin.jpg" height="330" width="250">
+        </a>
+    </div>
+    <div>
+        <a href="Eyewear.html">
+            <img src="Eyewear/eye1.jpg" height="330" width="250">
+        </a>
+    </div>
+    <div>
+        <a href="handbag.html">
+            <img src="Handbag/Hand1.jpg" height="310" width="250">
+        </a>
+    </div>
+    <div>
+        <a href="perfume.html">
+            <img src="Perfume/perfume6.jpg" height="380" width="250">
+        </a>
+    </div>
+    <div>
+        <a href="watches.html">
+            <img src="Watches/watch4.jpg" height="330" width="250">
+        </a>
+    </div>
+</div>
+<br>
+<div style="background-color:#FFF7F3;border-color: #604652; border-radius: 10px;border-width: 1px;border-style: groove;">
+<div id="designGallery" style="text-align:center;">
+    <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;border-style: none;">The Creator Gallery</p>
+</div>
+</div >
+<script>
+  const gallery = document.getElementById("designGallery");
+  const storedImages = JSON.parse(localStorage.getItem("designGallery"));
+
+  if (storedImages && storedImages.length > 0) {
+    storedImages.forEach(src => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.style.width = "150px";
+      img.style.margin = "10px";
+      img.style.borderRadius = "10px";
+      img.style.border = "1px solid #ccc";
+      gallery.appendChild(img);
+    });
+  } else {
+    gallery.innerHTML = "<p>No designs uploaded yet. Visit the Creator page to add your designs.</p>";
+  }
+</script>
+
+<br>
+<div class="flex-container-1">
+    <footer>
+        <div>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container">
+           <div class="w-100 d-flex justify-content-between">
+            <div>
+            <i class="fa-solid fa-envelope text-light contact-info"></i>
+            <a href="" class="navbar-sm-brand text-light text-decoration-none contact-info">info@fashionsphereproducts.com</a>
+            &nbsp;
+            <i class="fa-solid fa-phone contact-info text-light"></i>
+            <a href="" class="navbar-sm-brand text-white text-decoration-none
+            contact-info">010-020-0409</a>
+            </div>
+            <div>
+                <a href=""class="text-white"><i class="fa-brands fa-facebook"></i></a>
+                &nbsp;
+                <a href=""class="text-white"><i class="fa-brands fa-instagram"></i></a>
+                &nbsp;
+                <a href=""class="text-white"><i class="fa-brands fa-twitter"></i></a>
+                &nbsp;
+                <a href=""class="text-white"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+           </div> 
+        </div>
+      </nav>
+</div>
+    </footer>
+</div>
+<script>
+  const userSection = document.getElementById("userSection");
+  const loggedInUser = localStorage.getItem("loggedInUser");
+  function logout() {
+    localStorage.removeItem("loggedInUser");
+    alert("You have been logged out.");
+    window.location.href = "User.html";
+  }
+</script>
+
+</body>
+</html>

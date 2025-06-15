@@ -1,0 +1,56 @@
+body {
+  font-family: "Gill Sans", sans-serif;
+  background-color: #fefaf2;
+  text-align: left;
+}
+
+.billing-summary {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.product-item {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 300px;
+  text-align: left;
+}
+
+.product-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f3ebdc;
+  color: #4b2e2e;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e3d6c5;
+}p{
+    text-align: center;
+}

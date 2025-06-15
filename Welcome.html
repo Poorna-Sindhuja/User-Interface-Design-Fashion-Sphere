@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome</title>
+        <style>
+            div{
+                border-radius:5px;
+
+            }
+            p{
+                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                color: #604652;
+            }
+        </style>
+    </head>
+    <body>
+<p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:#604652;font-size: 30px;">
+  Welcome, <span id="user-name"></span>!
+</p>
+
+        <div>
+            <p>
+                <img src="Logo.png" height="192" width="192" Style="float:left; margin-right:10px ;margin-bottom:10px;">
+                Welcome Shoppers! We are the Team FASHION SPHERE! ✨🛍️
+                <br>
+                Discover the latest trends, timeless styles, and must-have fashion pieces curated just for you. Whether you're looking for chic everyday wear or statement outfits, we've got you covered!
+                <br>
+                Enjoy your shopping experience & stay stylish! 💃🖤
+                <br>
+                #HappyShopping #StayTrendy<br>
+                Step into a world of style, where fashion meets elegance. <br>
+                From trendy everyday wear to statement outfits, we bring you the latest collections to elevate your wardrobe. Whether you're looking for chic casuals, glamorous partywear, or timeless classics, we've got it all! Our carefully curated designs ensure you always step out in confidence and style.<br>
+
+Enjoy a seamless shopping experience with top-quality fabrics, the latest trends, and exclusive deals. Find your perfect look and express your unique style effortlessly.
+<br>
+Happy shopping, and stay fabulous! 💖🛍️
+ #FashionForward #StayStylish
+            </p>
+        </div>
+        <script>
+  window.onload = function() {
+    const userData = localStorage.getItem('loggedInUser');
+    document.getElementById('user-name').textContent = userData || 'Guest';
+  };
+</script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Track Your Orders</title>
+  <style>
+    body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h2, h3 {
+  color: #222;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 220px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#statusMessage {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.order {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: #fdfdfd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.order p {
+  margin: 5px 0;
+}
+
+.order img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.order-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.cancel-btn {
+  margin-top: 10px;
+  background-color: crimson;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #b30000;
+}
+
+#backHomeBtn {
+  margin-top: 30px;
+  background-color: #28a745;
+}
+
+#backHomeBtn:hover {
+  background-color: #1e7e34;
+}
+
+  </style>
+</head>
+<body>
+  <h2>Your Orders</h2>
+  <input type="text" id="searchId" placeholder="Enter Order ID to Track" />
+  <button onclick="trackOrder()">Track</button> <button id="backHomeBtn" onclick="goHome()" style="float:right;">Back to Home</button>
+  <p id="statusMessage"></p>
+<hr>
+  <h3>Previous Orders</h3>
+  <div id="ordersContainer"></div>
+<hr>
+  <script>
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    function displayOrders() {
+      const container = document.getElementById("ordersContainer");
+      container.innerHTML = "";
+
+      if (orders.length === 0) {
+        container.innerHTML = "<p>No previous orders found.</p>";
+        return;
+      }
+
+      orders.forEach(order => {
+        const orderDiv = document.createElement("div");
+        orderDiv.className = "order";
+
+        const itemsHTML = order.items.map(item => `
+          <div style="display: flex; align-items: center; margin-top: 5px;">
+            <img src="${item.image}" alt="${item.name}">
+            <div>
+              <div><strong>${item.name}</strong></div>
+              <div>Qty: ${item.quantity}</div>
+              <div>Price: ₹${item.price * item.quantity}</div>
+            </div>
+          </div>
+        `).join("");
+
+        orderDiv.innerHTML = `
+  <p><strong>Order ID:</strong> ${order.id}</p>
+  <p><strong>Date:</strong> ${order.date}</p>
+  <p><strong>Status:</strong> ${order.status}</p>
+  <p><strong>Total:</strong> ₹${order.total}</p>
+  ${itemsHTML}
+  ${order.status !== "Delivered" ? `
+  <button onclick="deleteOrder('${order.id}')" class="cancel-btn">Cancel Order</button>
+` : `
+  ${order.returned ? '<p style="color: green; font-weight: bold;">Returned</p>' : `
+    <button onclick="returnOrder('${order.id}')" class="cancel-btn" style="background-color: orange;">Return Order</button>
+  `}
+`}
+<button onclick="deleteHistory('${order.id}')" class="cancel-btn" style="background-color: grey; margin-left: 10px;">Delete History</button>
+`;
+
+        container.appendChild(orderDiv);
+      });
+    }
+
+    function trackOrder() {
+      const searchId = document.getElementById("searchId").value.trim().toUpperCase();
+      const statusMessage = document.getElementById("statusMessage");
+      const found = orders.find(o => o.id === searchId);
+
+      if (found) {
+        statusMessage.textContent = `Order ${found.id}: ${found.status}`;
+        statusMessage.style.color = "green";
+      } else {
+        statusMessage.textContent = "Order ID not found.";
+        statusMessage.style.color = "red";
+      }
+    }
+
+    displayOrders();
+function updateOrderStatuses() {
+  const statusOptions = [
+    "Order Placed - Processing",
+    "Shipped",
+    "Out for Delivery",
+    "Delivered"
+  ];
+
+  let changed = false;
+
+  orders.forEach(order => {
+    const currentIndex = statusOptions.indexOf(order.status);
+    if (currentIndex !== -1 && currentIndex < statusOptions.length - 1) {
+      order.status = statusOptions[currentIndex + 1];
+      changed = true;
+    }
+  });
+
+  if (changed) {
+    localStorage.setItem("orders", JSON.stringify(orders));
+    displayOrders();
+  }
+}
+// Update statuses every 2 minutes (120000 milliseconds)
+setInterval(updateOrderStatuses, 10000); // 60,000ms = 1 minute
+
+
+    function goHome() {
+      window.location.href = 'Homepage.html';  // Change if your home page file has a different name
+    }
+    function deleteOrder(orderId) {
+  const confirmDelete = confirm("Are you sure you want to cancel this order?");
+  if (!confirmDelete) return;
+
+  const updatedOrders = orders.filter(order => order.id !== orderId);
+  localStorage.setItem("orders", JSON.stringify(updatedOrders));
+  alert(`Order ${orderId} has been cancelled.`);
+  location.reload(); // Refresh to update UI
+}
+function returnOrder(orderId) {
+  const confirmReturn = confirm("Do you want to return this order?");
+  if (!confirmReturn) return;
+
+  const index = orders.findIndex(order => order.id === orderId);
+  if (index !== -1) {
+    orders[index].returned = true;
+    localStorage.setItem("orders", JSON.stringify(orders));
+    alert(`Order ${orderId} has been marked as returned.`);
+    displayOrders();
+  }
+}
+function deleteHistory(orderId) {
+  const confirmDelete = confirm("Are you sure you want to permanently delete this order from history?");
+  if (!confirmDelete) return;
+
+  const updatedOrders = orders.filter(order => order.id !== orderId);
+  localStorage.setItem("orders", JSON.stringify(updatedOrders));
+  alert(`Order ${orderId} has been deleted from history.`);
+  location.reload();
+}
+  </script>
+</body>
+</html>

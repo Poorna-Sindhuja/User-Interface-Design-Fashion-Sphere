@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+        <title>Women's Wear</title>
+        <link rel="stylesheet" href="stylesheet.css">
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+        <!--from bootstramp.com  to use bootstramp we will use CDN-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" 
+        crossorigin="anonymous">
+        <!---javascript bundle with popper. it is also from bootstramp -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/f5be84bbff.js" crossorigin="anonymous"></script>
+    <style>
+
+    </style>
+    </head>
+    <body>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container d-flex justify-content-between">
+        <div>
+            <h1 style="color:#604652">FashionSphere</h1>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" aria-current="page" href="Homepage.html">Home</a>
+                  </li>
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" href="About.html">About</a>
+                  </li>
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" href="cart.html">Cart</a>
+                  </li>
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" href="contact.html">Contact</a>
+                  </li>
+                </ul>
+                <div class="position-relative">
+                    <a href="cart.html"class="text-decoration-none text-dark">
+                        <i class="fa-solid fa-cart-shopping nav-icon"></i></a>
+                        &nbsp;
+                </div>
+            </div>
+          </nav>
+    </div>
+  </nav>
+  <br>
+        <p style="font-family: sans-serif; font-weight: normal;">Women's Wear</p>
+        <div id="products"></div>
+        <script>
+            const products = [
+  { id: 1, name: "White Kurti with dupatta", price: 2999, image: "Women/women1.jpg",href:"Productdetails/item1.html"},
+  { id: 2, name: "Kurti", price: 3499, image: "Women/women2.webp",href:"Productdetails/item2.html" },
+  { id: 3, name: "Chikankari Print Kurti with Dupatta", price: 3499, image: "Women/women3.jpeg",href:"Productdetails/item3.html" },
+  { id: 4, name: "Anarkali with Dupatta", price: 3499, image: "Women/Anarkali.webp",href:"Productdetails/item4.html" },
+  { id: 5, name: "Rani Saa Print(+Dupatta)", price: 2999, image: "Women/Anarkali2.jpeg",href:"Productdetails/item5.html" },
+  { id: 6, name: "Short Kurti ", price: 1499, image: "Women/women4.jpg",href:"Productdetails/item6.html" },
+  { id: 7, name: "Office wear Short Kurti", price: 1299, image: "Women/women7.jpg",href:"Productdetails/item7.html" },
+  { id: 8, name: "Turtle Neck Sweater", price: 599, image: "Women/women8.jpg",href:"Productdetails/item8.html" },
+  { id: 9, name: "Indigo Bloom Peplum Top", price: 49.99, image: "Women/women9.webp",href:"Productdetails/item9.html" },
+  { id: 10, name: "Printed Cotton Kurti", price:39.99, image: "Women/women10.jpg",href:"Productdetails/item10.html" },
+  { id: 11, name: "Beige Blazer Office Wear", price: 3499, image: "Women/women11.jpg",href:"Productdetails/item11.html" },
+  { id: 12, name: "Suit set", price: 8999, image: "Women/women12.webp",href:"Productdetails/item12.html" },
+  { id: 13, name: "Navy Tailored Pant Suit", price: 5999, image: "Women/women13.jpeg",href:"Productdetails/item13.html" },
+  { id: 14, name: "High-Waisted Palazzo Pants", price: 4799, image: "Women/women14.jpg",href:"Productdetails/item14.html" },
+  { id: 15, name: "Comfort Knit Lounge Set", price: 3999, image: "Women/women15.jpg",href:"Productdetails/item15.html" },
+];
+</script>
+<script src="cart.js"></script>
+    </body>
+</html>

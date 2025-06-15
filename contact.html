@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - Fashion Sphere</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    header {
+      background-color:#FFF7F3;
+      color:#000;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      color: #111;
+      font-size: 2.5em;
+    }
+
+    .contact-info, form {
+      margin-top: 30px;
+    }
+
+    .contact-info p {
+      line-height: 1.8;
+    }
+
+    form {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    button:hover {
+      background-color: #d81b60;
+    }
+
+    footer {
+      background-color:#FFF7F3;
+      color:#000;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Fashion Sphere</h1>
+    <p>Your Style. Our Passion.</p>
+  </header>
+
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p>Have questions, suggestions, or feedback? We’d love to hear from you.</p>
+
+    <div class="contact-info">
+      <p><strong>Email:</strong> info@fashionsphereproducts.com</p>
+      <p><strong>Phone:</strong> +91-98765-43210</p>
+      <p><strong>Address:</strong> Fashion Sphere HQ, 3rd Floor, Style Avenue, Mumbai, India</p>
+    </div>
+
+    <form onsubmit="return sendMail()">
+  <label for="name">Your Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Your Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" rows="5" required></textarea>
+
+  <button type="submit">Send Message</button>
+  <button type="button" onclick="Redirect()">Back</button>
+</form>
+
+<script>
+function sendMail() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  const subject = encodeURIComponent("Feedback from " + name);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+
+  window.location.href = `mailto:poornasindhuja2006@gmail.com?subject=${subject}&body=${body}`;
+
+  alert('Thank you for your valuable feedback! Hope you enjoy!');
+  return false; // prevent actual form submission
+}
+
+function Redirect() {
+  window.location.href = "Homepage.html"; 
+}
+</script>
+
+    
+  </div>
+
+  <footer>
+    &copy; 2025 Fashion Sphere. All rights reserved.
+  </footer>
+
+</body>
+</html>

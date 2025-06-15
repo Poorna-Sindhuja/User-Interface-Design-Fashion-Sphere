@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Footwear</title>
+        <link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+        <!--from bootstramp.com  to use bootstramp we will use CDN-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" 
+        crossorigin="anonymous">
+        <!---javascript bundle with popper. it is also from bootstramp -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/f5be84bbff.js" crossorigin="anonymous"></script>
+        <style>
+</style>
+    </head>
+    <body>
+       <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container d-flex justify-content-between">
+        <div>
+            <h1 style="color:#604652">FashionSphere</h1>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" aria-current="page" href="Homepage.html">Home</a>
+                  </li>
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" href="About.html">About</a>
+                  </li>
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" href="cart.html">Cart</a>
+                  </li>
+                  <li class="nav-item nav-items">
+                    <a class="nav-link nav-links" href="contact.html">Contact</a>
+                  </li>
+                </ul>
+                <div class="position-relative">
+                    <a href="#cart"class="text-decoration-none text-dark">
+                        <i class="fa-solid fa-cart-shopping nav-icon"></i></a>
+                        &nbsp;
+                </div>
+            
+            </div>
+          </nav>
+          </div>
+  </nav>
+        <p style="font-family: sans-serif; font-weight: normal;">Footwear</p>
+        <div id="products"></div>
+        <script>
+            const products = [
+  { id: 61, name: "UrbanWalk", price: 49.99, image: "Footwear/foot1.jpg",width:200,href:"Productdetails/item61.html"},
+  { id: 62, name: "Velvet Charm", price: 64.99, image: "Footwear/foot2.jpg",width:200,href:"Productdetails/item62.html" },
+  { id: 63, name: "Combat Boots", price: 74.99, image: "Footwear/foot3.jpg",href:"Productdetails/item63.html" },
+  { id: 64, name: "Noor-E-Zari Embroidered Juttis", price:59.99, image: "Footwear/foot4.jpg",href:"Productdetails/item64.html" },
+  { id: 65, name: "Gulzar Blush", price: 59.9, image: "Footwear/foot5.jpg",href:"Productdetails/item65.html" },
+  { id: 66, name: "Onyx Black Suede Loafers", price: 59.9, image: "Footwear/foot6.jpg",href:"Productdetails/item66.html" },
+  { id: 67, name: "Air Jordan 1 Retro High OG ", price: 190.00, image: "Footwear/foot7.jpg",href:"Productdetails/item67.html" },
+  { id: 68, name: " Classic Black Oxford Dress Shoes", price: 230, image: "Footwear/foot8.jpg",href:"Productdetails/item68.html" },
+  { id: 69, name: " Funny Zoo “Hi-BEAR” Kids Clogs", price: 18.99, image: "Footwear/foot9.jpg",href:"Productdetails/item69.html" },
+  { id: 70, name: "Nike Little Kids’ Air Force 1", price: 49.99, image: "Footwear/foot10.jpg",href:"Productdetails/item70.html" },
+  { id: 71, name: "LuxeComfort™ Women's Criss-Cross Orthopedic Sandals", price: 34.95, image: "Footwear/foot11.avif",href:"Productdetails/item71.html" },
+  { id: 72, name: "LushPearl™ Embellished Toe Ring Flats", price: 42.00, image: "Footwear/foot12.webp",href:"Productdetails/item72.html" },
+  { id: 73, name: "RajasTrad™ Classic Kolhapuri Chappals", price: 55.00, image: "Footwear/foot13.webp",href:"Productdetails/item73.html" },
+  { id: 74, name: "StrideMax™ Velocity Pulse Runners", price: 79.99, image: "Footwear/foot14.webp",href:"Productdetails/item74.html" },
+  { id: 75, name: " LittleSteps™ Adventure Sandals", price: 24.99, image: "Footwear/foot15.avif",href:"Productdetails/item75.html" },
+];
+</script>
+<script src="cart.js"></script>
+    </body>
+</html>

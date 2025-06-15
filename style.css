@@ -1,0 +1,112 @@
+body {
+      margin: 0;
+      height: 100vh;
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 26px;
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: #333;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper input {
+      width: 100%;
+      padding: 0.5rem;
+      padding-right: 2.5rem; /* Reserve space for icon */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    .toggle-eye {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-size: 22px;
+      color: #777;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .toggle-eye:hover {
+      color: #000;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.7rem;
+      background-color: #297fb9;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #206da0;
+    }
+
+    .signup-link {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .signup-link a {
+      color: #297fb9;
+      text-decoration: none;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+    .back-home {
+  text-align: center;
+  margin-top: 0.8rem;
+}
+
+.back-home a {
+  display: inline-block;
+  color: #297fb9;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 0.4rem 1rem;
+  border: 1px solid #297fb9;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.back-home a:hover {
+  background-color: #297fb9;
+  color: #fff;
+}
